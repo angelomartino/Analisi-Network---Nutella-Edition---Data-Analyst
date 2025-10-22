@@ -34,6 +34,9 @@ Questa attività è **tra le più critiche** per il successo della migrazione su
 
 ![Applicazione](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/interface.png?raw=true)
 
+Lo sviluppo di questa applicazione ha beneficiato del supporto di diversi modelli linguistici di intelligenza artificiale LLM, impiegati per attività di stesura e documentazione.
+Ogni sezione del codice è stata comunque attentamente revisionata e consolidata dall’autore per garantirne l’accuratezza e l’aderenza agli obiettivi.
+
 ## 🗂️ File richiesti
 
 ### 1. Report Flexera (CSV)
