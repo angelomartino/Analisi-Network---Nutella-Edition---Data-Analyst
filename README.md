@@ -133,7 +133,7 @@ I due dizionari rappresentano la mappatura tra le diverse location/servizi. Entr
 | 8080 | Proxy |
 | 10065 | Zscaler |
 | 383 | Rule OMI |
-| Altri casi | "skip shared services" se coinvolgono IP di servizi noti |
+| Altri casi | "Shared Services" se coinvolgono IP di servizi noti |
 | ... | ... |
 
 ---
@@ -143,8 +143,8 @@ I due dizionari rappresentano la mappatura tra le diverse location/servizi. Entr
 Esempio di output generato (semplificato):
 ```csv
 src_name,dest_name,src_addr,dest_addr,src_service,dest_service,src_loc,dest_loc,COMMENTO
-SRV01,SRV02,10.11.12.13,10.11.14.15,LoadBalancer,Monitoring,ALBA_AUT NET,ALBA_DMZ EXT,skip shared services
-SRV03,SRV04,10.11.12.99,10.11.13.77,unknown,unknown,ALBA_DMZ INT,ALBA_DMZ EXT,SMTP
+SRV01,SRV02,10.11.12.13,10.11.14.15,8080,LoadBalancer,Monitoring,ALBA_AUT NET,ALBA_DMZ EXT,skip shared services
+SRV03,SRV04,10.11.12.99,10.11.13.77,25,unknown,unknown,ALBA_DMZ INT,ALBA_DMZ EXT,SMTP
 ```
 
 Features originali report Flexera:

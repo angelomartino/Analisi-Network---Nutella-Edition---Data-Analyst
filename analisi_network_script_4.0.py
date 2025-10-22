@@ -130,7 +130,6 @@ def port_matches(target_port: int, port_value) -> bool:
     return bool(re.search(rf'(?<!\d){target_port}(?!\d)', port_str))
 
 
-# >>> NEW  (mettila dopo la sezione "HELPER FUNCTIONS - IP & NETWORK UTILITIES")
 
 def load_mappings_from_excel(xlsx_path: str) -> tuple[dict, dict]:
     """
@@ -308,12 +307,9 @@ def enrich_row_with_locations(row: dict, subnet_index: list) -> None:
 
 
 def enrich_row_with_comment(row: dict) -> None:
-    """
-    Add comment field based on service and port rules.
+
+    # Add comment field based on service and port rules.
     
-    Args:
-        row: CSV row to modify (modified in-place)
-    """
     comment = ""
     
     # Rule 1: Skip if either service is known (not unknown)
