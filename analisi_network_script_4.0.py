@@ -9,7 +9,7 @@ import time
 import queue
 import tkinter as tk
 from PIL import Image, ImageTk
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, filedialog, messagebox, PhotoImage
 from typing import Iterable
 from tempfile import NamedTemporaryFile
 from pathlib import Path
@@ -615,6 +615,12 @@ class QuizWindow(tk.Toplevel):
         messagebox.showinfo("Fatto!", "Grazie! Hai completato il quiz 🍫")
         self.destroy()
 
+def resource_path(relative_path):
+    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+        base_path = Path(sys._MEIPASS)
+    else:
+        base_path = Path(__file__).resolve().parent
+    return base_path / relative_path
 
 class App(tk.Tk):
     """Main application window — Ferrero / Nutella Edition."""
@@ -646,6 +652,13 @@ class App(tk.Tk):
         self._setup_styles()
         self._create_widgets()
         self.after(60, self._drain_queue)
+
+        # Set window/taskbar icon
+        try:
+            icon_path = resource_path("nutella-icon.ico")
+            self.iconbitmap(default=str(icon_path))
+        except Exception as e:
+            print(f"Could not set icon: {e}")
 
     def _setup_styles(self):
         s = ttk.Style()
@@ -679,9 +692,33 @@ class App(tk.Tk):
         # Header
         topbar = ttk.Frame(outer, style="App.TFrame")
         topbar.pack(fill="x", pady=(0, 12))
-        ttk.Label(topbar, text="Analisi Network 🍫", style="H1.TLabel").pack(side="left")
+
+        ttk.Label(topbar, text="Analisi Network ", style="H1.TLabel").pack(side="left")
         self.status_chip = ttk.Label(topbar, text="Pronto", style="H2.TLabel")
         self.status_chip.pack(side="right")
+
+        # Nutella icon
+        # 1) Load + scale image
+        icon_path = resource_path("nutella.png")  # your correct path
+        im = Image.open(icon_path).convert("RGBA")
+
+        # Scale to a consistent height with good quality
+        target_h = 28
+        w, h = im.size
+        target_w = max(1, round(w * (target_h / h)))
+        im = im.resize((target_w, target_h), Image.LANCZOS)
+
+        # Keep a strong reference on self
+        self.logo_img = ImageTk.PhotoImage(im)
+
+        # 2) Make a Tk label for the image (more reliable than ttk for images)
+        # Match topbar background so it blends with your theme
+        style = ttk.Style()
+        bg = style.lookup("App.TFrame", "background") or style.lookup(".", "background") or "#FFFFFF"
+
+        logo = tk.Label(topbar, image=self.logo_img, bg=bg, bd=0, highlightthickness=0)
+        logo.pack(side="left", padx=(0, 8))
+
 
         # Layout split
         content = ttk.Frame(outer, style="App.TFrame")
