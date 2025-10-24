@@ -170,9 +170,18 @@ L’elaborato finale generato dallo script (contenente l’elenco delle regole f
 In questa fase, vengono approfonditi e validati i flussi che richiedono ulteriori verifiche tecniche o chiarimenti applicativi, così da garantire che tutte le dipendenze siano correttamente comprese e gestite nel processo di migrazione verso Azure.
 
 
-![Applicazione](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/PowerBI.png?raw=true)
-![Applicazione](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/PowerBI2.png?raw=true)
-![Applicazione](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/excel.png?raw=true)
+### Integrazione dati in Power BI
+
+Un ulteriore fase del progetto consisteva nell'utilizzo di Power BI per effettuare un ulteriore merge con dati aggiuntivi forniti dal cliente, provenienti da diverse fonti e integrati tramite schemi relazionali. È stata inoltre realizzata un’interfaccia tecnica interattiva, completa di dashboard per effettuare analisi rapide e verifiche incrociate.
+
+![PowerBI](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/PowerBI.png?raw=true)
+![PowerBI2](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/PowerBI2.png?raw=true)
+
+### Excel
+
+Infine il risultato dell'elaborazione veniva visualizzato e tracciato su excel.
+
+![Excel](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/excel.png?raw=true)
 
 ## Licenza
 © 2025 Angelo Martino. Tutti i diritti riservati.  
