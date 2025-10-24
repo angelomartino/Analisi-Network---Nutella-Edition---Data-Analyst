@@ -169,6 +169,11 @@ Sebbene lo script sia progettato per rilevare in modo automatico la maggior part
 L’elaborato finale generato dallo script (contenente l’elenco delle regole firewall e dei flussi di rete rilevati) viene infatti sottoposto al team di networking per una revisione congiunta.
 In questa fase, vengono approfonditi e validati i flussi che richiedono ulteriori verifiche tecniche o chiarimenti applicativi, così da garantire che tutte le dipendenze siano correttamente comprese e gestite nel processo di migrazione verso Azure.
 
+
+![Applicazione](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/PowerBI.png?raw=true)
+![Applicazione](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/PowerBI2.png?raw=true)
+![Applicazione](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/excel.png?raw=true)
+
 ## Licenza
 © 2025 Angelo Martino. Tutti i diritti riservati.  
 Il codice è pubblicato esclusivamente a scopo dimostrativo e non è autorizzato l'uso, la modifica o la ridistribuzione senza consenso scritto dell'autore.
