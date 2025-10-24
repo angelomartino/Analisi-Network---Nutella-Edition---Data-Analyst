@@ -175,6 +175,9 @@ In questa fase, vengono approfonditi e validati i flussi che richiedono ulterior
 Un ulteriore fase del progetto consisteva nell'utilizzo di Power BI per effettuare un ulteriore merge con dati aggiuntivi forniti dal cliente, provenienti da diverse fonti e integrati tramite schemi relazionali. È stata inoltre realizzata un’interfaccia tecnica interattiva, completa di dashboard per effettuare analisi rapide e verifiche incrociate.
 
 ![PowerBI](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/PowerBI.png?raw=true)
+
+#### Schema relazionale
+
 ![PowerBI2](https://github.com/angelomartino/Analisi-Network---Nutella-Edition---Data-Analyst/blob/main/img/PowerBI2.png?raw=true)
 
 ### Excel
