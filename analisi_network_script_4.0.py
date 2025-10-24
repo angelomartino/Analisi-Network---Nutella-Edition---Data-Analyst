@@ -77,7 +77,7 @@ def build_ip_to_service_index(service_map: dict) -> dict:
 
 def build_subnet_index(subnets_by_location: dict) -> list:
 
-    # Parse and sort subnets in  "Location-to-subnet" mapping for efficient longest-prefix matching.
+    # Parse and sort subnets in  "subnet-to-location" mapping for efficient longest-prefix matching.
     
     compiled = []
     for location, cidrs in subnets_by_location.items():
@@ -422,11 +422,11 @@ def run_user_python_code(selected_file: str, selected_excel: str, server_filter:
     inbound_count = {srv: 0 for srv in server_filter} if server_filter else {}
 
     with open(selected_file, "r", newline="", encoding="utf-8") as src, \
-         NamedTemporaryFile("w", newline="", delete=False, encoding="utf-8", 
+        NamedTemporaryFile("w", newline="", delete=False, encoding="utf-8", 
                            dir=str(out_dir)) as tmp:
         
         reader = csv.DictReader(src)
-        
+
         # Validate required columns exist
         missing = [c for c in FILTER_COLUMNS if c not in reader.fieldnames]
         if missing:
@@ -436,13 +436,16 @@ def run_user_python_code(selected_file: str, selected_excel: str, server_filter:
                              "dest_name" not in reader.fieldnames):
             raise ValueError("Colonne 'src_name' o 'dest_name' non trovate nel CSV")
         
-        # Prepare output columns (add new enrichment columns)
-        fieldnames = list(reader.fieldnames or [])
-        for col in ("src_service", "dest_service", "src_loc", "dest_loc", "COMMENTO"):
-            if col not in fieldnames:
-                fieldnames.append(col)
-        
-        writer = csv.DictWriter(tmp, fieldnames=fieldnames)
+        # === SCHEMA FINALE ORDINATO E RIDOTTO ===
+        TARGET_COLS = [
+            "src_loc","src_name","src_addr","src_port","src_app","src_app_context","src_proc","src_service",
+            "dest_loc","dest_name","dest_addr","dest_port","dest_app","dest_app_context","dest_service",
+            "protocol_name","dest_proc","netstat_count","COMMENTO","first_seen","last_seen","critical"
+        ]
+
+        # NB: se alcune colonne non esistono nell'input, verranno scritte vuote.
+        # Scartiamo automaticamente eventuali campi extra presenti nelle righe.
+        writer = csv.DictWriter(tmp, fieldnames=TARGET_COLS, extrasaction="ignore")
         writer.writeheader()
         
         # Process each row: filter -> enrich -> write
@@ -483,6 +486,11 @@ def run_user_python_code(selected_file: str, selected_excel: str, server_filter:
             enrich_row_with_locations(row, subnet_index)
             enrich_row_with_comment(row)
             
+            
+            # Normalizza i campi mancanti per lo schema finale
+            for k in TARGET_COLS:
+                if k not in row or row[k] is None:
+                    row[k] = ""
             # Write enriched row
             writer.writerow(row)
             
@@ -699,7 +707,7 @@ class App(tk.Tk):
 
         # Nutella icon
         # 1) Load + scale image
-        icon_path = resource_path("nutella.png")  # your correct path
+        icon_path = resource_path("nutella.png")
         im = Image.open(icon_path).convert("RGBA")
 
         # Scale to a consistent height with good quality
