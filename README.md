@@ -169,6 +169,8 @@ Sebbene lo script sia progettato per rilevare in modo automatico la maggior part
 L’elaborato finale generato dallo script (contenente l’elenco delle regole firewall e dei flussi di rete rilevati) viene infatti sottoposto al team di networking per una revisione congiunta.
 In questa fase, vengono approfonditi e validati i flussi che richiedono ulteriori verifiche tecniche o chiarimenti applicativi, così da garantire che tutte le dipendenze siano correttamente comprese e gestite nel processo di migrazione verso Azure.
 
+Infine, l’analisi manuale dei flussi di rete e la successiva definizione delle **regole firewall** sarebbe stata impossibile da realizzare in tempi utili, a causa della mole elevatissima di dati da esaminare. Le regole firewall, infatti, si basano principalmente **sull’individuazione** dei servizi applicativi e delle subnet di origine e destinazione, due elementi che, nel contesto analizzato, risultavano numerosissimi e distribuiti su larga scala. Grazie a questo processo automatizzato di **correlazione tra questi dati** provenienti da diverse fonti e con strutture eterogenee si riescono ad abbattare totalmente i tempi in centinaia di ordini di grandezza, compreso il carico lavorativo.
+
 
 ### Integrazione dati in Power BI
 
